@@ -133,7 +133,9 @@
     if (baseUrl.length > 0 && ![baseUrl hasSuffix:@"/"]) {
         url = [url URLByAppendingPathComponent:@""];
     }
-
+    if ([detailUrl hasPrefix:@"/"]) {
+        detailUrl = [detailUrl substringFromIndex:1];
+    }
     return [NSURL URLWithString:detailUrl relativeToURL:url].absoluteString;
 }
 
